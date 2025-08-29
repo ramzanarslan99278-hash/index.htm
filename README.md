@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For My Love Zainab</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body, html { height:100%; width:100%; font-family: 'Segoe UI', sans-serif; overflow:hidden; }
+
+    .page {
+      height:100vh;
+      width:100vw;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      position:absolute;
+      top:0; left:0;
+      transition:opacity 1s ease, visibility 1s;
+    }
+    .hidden {
+      opacity:0; visibility:hidden;
+    }
+    /* Page 1 */
+    #page1 {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color:white;
+      text-align:center;
+    }
+    #page1 h1 {
+      font-size:3em;
+      text-shadow:2px 2px 20px #ff0047;
+      animation: float 6s infinite alternate;
+    }
+    @keyframes float {
+      from { transform: translateY(0px) rotateY(0deg); }
+      to { transform: translateY(-20px) rotateY(15deg); }
+    }
+    button {
+      margin-top:30px;
+      padding:15px 40px;
+      border:none;
+      border-radius:30px;
+      background:#ff0047;
+      color:white;
+      font-size:1.2em;
+      cursor:pointer;
+      box-shadow:0 4px 15px rgba(0,0,0,0.3);
+      transition:0.3s;
+    }
+    button:hover { background:#ff3366; transform:scale(1.1); }
+
+    /* Page 2 */
+    #page2 {
+      background:url('OIP.jpg') no-repeat center center/cover;
+    }
+    .bird {
+      position:absolute; width:60px; top:20%; animation: fly 12s linear infinite;
+    }
+    @keyframes fly { from{ left:-100px; } to{ left:110%; } }
+    .walk {
+      position:absolute; bottom:0; width:120px; left:-150px;
+      animation: walk 18s linear infinite;
+    }
+    @keyframes walk { from{ left:-150px; } to{ left:110%; } }
+
+    /* Page 3 */
+    #page3 { background:black; color:white; }
+    .poetry {
+      font-size:2em; text-align:center; animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow:0 0 10px #ff0047, 0 0 20px #ff0047; }
+      to   { text-shadow:0 0 20px #ff99cc, 0 0 40px #ff0047; }
+    }
+    .hearts { position:absolute; width:100%; height:100%; top:0; left:0; z-index:-1; }
+    .heart {
+      position:absolute; bottom:-50px; width:20px; height:20px;
+      background:red; transform:rotate(45deg); animation: rise 8s infinite;
+    }
+    .heart::before, .heart::after {
+      content:""; position:absolute; width:20px; height:20px;
+      background:red; border-radius:50%;
+    }
+    .heart::before { top:-10px; left:0; }
+    .heart::after { left:-10px; top:0; }
+    @keyframes rise {
+      from { transform:translateY(0) rotate(45deg); opacity:1; }
+      to { transform:translateY(-100vh) rotate(720deg); opacity:0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page 1 -->
+  <div id="page1" class="page">
+    <h1>🌸 Good Morning My Love 💖 Zainab 🌸</h1>
+    <button onclick="nextPage(2)">Let's Start</button>
+  </div>
+
+  <!-- Page 2 -->
+  <div id="page2" class="page hidden">
+    <img src="arslan.jpg" class="bird">
+    <img src="arslan.jpg" class="walk">
+    <button onclick="nextPage(3)">Next ➝</button>
+  </div>
+
+  <!-- Page 3 -->
+  <div id="page3" class="page hidden">
+    <div class="poetry">
+      🌹 "Tere bina adhura lagta hai har ehsaas,<br>
+      Tu meri zindagi ka sabse khoobsurat pyaar hai Zainab..." 🌹
+    </div>
+    <div class="hearts">
+      <div class="heart" style="left:10%; animation-delay:0s;"></div>
+      <div class="heart" style="left:30%; animation-delay:2s;"></div>
+      <div class="heart" style="left:50%; animation-delay:4s;"></div>
+      <div class="heart" style="left:70%; animation-delay:1s;"></div>
+      <div class="heart" style="left:90%; animation-delay:3s;"></div>
+    </div>
+  </div>
+
+  <script>
+    function nextPage(num) {
+      document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+      document.getElementById('page' + num).classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
